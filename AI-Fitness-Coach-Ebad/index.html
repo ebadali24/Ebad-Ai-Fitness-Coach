@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitAI - AI Fitness Coach</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand"><span>⚡</span> FitAI</div>
+      <p class="small">AI FITNESS COACH</p>
+      <button class="nav active" data-page="dashboard">🏠 Dashboard</button>
+      <button class="nav" data-page="body">📸 Body Analysis</button>
+      <button class="nav" data-page="plans">🥗 My Plans</button>
+      <button class="nav" data-page="tracker">✅ Habit Tracker</button>
+      <button class="nav" data-page="chat">🤖 AI Coach</button>
+      <button class="nav" data-page="progress">📈 Progress</button>
+      <button class="nav" data-page="admin">🛡️ Admin Panel</button>
+      <div class="sidebar-bottom">
+        <div class="user-mini"><div class="avatar">EA</div><div><b>Ebad</b><small>Premium User</small></div></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header>
+        <div>
+          <p class="eyebrow">SUNDAY, AUGUST 9, 2026</p>
+          <h1 id="pageTitle">Good morning, Ebad 👋</h1>
+        </div>
+        <div class="header-actions"><span class="pill">🔥 7 day streak</span><div class="avatar">EA</div></div>
+      </header>
+
+      <section id="dashboard" class="page active-page">
+        <div class="hero">
+          <div><span class="tag">AI FITNESS COACH</span><h2>Your body. Your goals. <span>Your plan.</span></h2>
+          <p>Personalized fitness guidance powered by AI, tracking and smart insights.</p>
+          <button class="primary" onclick="showPage('body')">Start Body Analysis →</button></div>
+          <div class="hero-art">🏃<div class="orbit">FIT<br><b>AI</b></div></div>
+        </div>
+        <div class="stats">
+          <div class="card stat"><span>⚖️ Weight</span><strong>72.4 kg</strong><small>↓ 1.8 kg this month</small></div>
+          <div class="card stat"><span>🔥 Calories</span><strong>1,840</strong><small>of 2,200 kcal</small></div>
+          <div class="card stat"><span>💪 Fitness Score</span><strong>82/100</strong><small>+6 this week</small></div>
+          <div class="card stat"><span>🔥 Streak</span><strong>7 days</strong><small>Keep going!</small></div>
+        </div>
+        <div class="grid2">
+          <div class="card">
+            <div class="card-head"><h3>Today's Goals</h3><span>3/4 complete</span></div>
+            <div class="goal-row done"><b>💧 Drink 2.5L water</b><span>✓</span></div>
+            <div class="goal-row done"><b>🥗 Follow meal plan</b><span>✓</span></div>
+            <div class="goal-row done"><b>🏋️ Complete workout</b><span>✓</span></div>
+            <div class="goal-row"><b>😴 8 hours sleep</b><span>○</span></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>AI Insight</h3><span class="tag">SMART</span></div>
+            <div class="insight">💡 Your consistency is improving. Based on your progress, keep protein high and aim for 7–8 hours of sleep tonight.</div>
+            <button class="secondary" onclick="showPage('chat')">Ask AI Coach</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="body" class="page">
+        <div class="section-title"><div><p class="eyebrow">STEP 1</p><h2>AI Body Analysis</h2><p>Upload front, back, left and right photos for an approximate posture and body analysis.</p></div></div>
+        <div class="upload-grid">
+          <div class="card upload-box" data-slot="Front"><div class="upload-icon">📷</div><h3>Front View</h3><p>Click to upload</p><input type="file" accept="image/*"></div>
+          <div class="card upload-box" data-slot="Back"><div class="upload-icon">📷</div><h3>Back View</h3><p>Click to upload</p><input type="file" accept="image/*"></div>
+          <div class="card upload-box" data-slot="Left"><div class="upload-icon">📷</div><h3>Left View</h3><p>Click to upload</p><input type="file" accept="image/*"></div>
+          <div class="card upload-box" data-slot="Right"><div class="upload-icon">📷</div><h3>Right View</h3><p>Click to upload</p><input type="file" accept="image/*"></div>
+        </div>
+        <div class="card analysis-result">
+          <div><h3>Analysis Preview</h3><p>Demo mode — no real medical diagnosis is performed.</p></div>
+          <div class="analysis-metrics"><div><b>24.1</b><small>Estimated BMI</small></div><div><b>Good</b><small>Posture</small></div><div><b>72.4 kg</b><small>Estimated Weight</small></div></div>
+        </div>
+      </section>
+
+      <section id="plans" class="page">
+        <p class="eyebrow">PERSONALIZED</p><h2>My Fitness Plans</h2>
+        <div class="goal-picker card"><h3>What's your current goal?</h3><div class="goals">
+          <button class="goal selected" onclick="selectGoal(this)">🔥 Weight Loss</button><button class="goal" onclick="selectGoal(this)">⚖️ Weight Gain</button><button class="goal" onclick="selectGoal(this)">💪 Muscle</button><button class="goal" onclick="selectGoal(this)">🧘 Maintenance</button>
+        </div><button class="primary" onclick="generatePlan()">Generate AI Plan</button></div>
+        <div class="grid2">
+          <div class="card"><div class="card-head"><h3>🥗 Today's Diet</h3><span>1,840 kcal</span></div>
+            <div class="meal"><b>Breakfast</b><span>Eggs + whole wheat toast <i>420 kcal</i></span></div>
+            <div class="meal"><b>Lunch</b><span>Chicken rice bowl <i>560 kcal</i></span></div>
+            <div class="meal"><b>Snack</b><span>Greek yogurt + banana <i>260 kcal</i></span></div>
+            <div class="meal"><b>Dinner</b><span>Grilled chicken + salad <i>600 kcal</i></span></div>
+          </div>
+          <div class="card"><div class="card-head"><h3>🏋️ Today's Workout</h3><span>45 min</span></div>
+            <div class="exercise"><b>Squats</b><span>3 × 12</span></div><div class="exercise"><b>Push Ups</b><span>3 × 10</span></div><div class="exercise"><b>Rows</b><span>3 × 12</span></div><div class="exercise"><b>Plank</b><span>3 × 45 sec</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tracker" class="page">
+        <p class="eyebrow">DAILY HABITS</p><h2>Habit Tracker</h2>
+        <div class="progress-card card"><div><b>Today's completion</b><strong id="completion">75%</strong></div><div class="bar"><span id="progressBar" style="width:75%"></span></div></div>
+        <div class="habit-list card">
+          <label><input type="checkbox" checked onchange="updateHabits()"> 💧 Drink 2.5L water <span>10 glasses</span></label>
+          <label><input type="checkbox" checked onchange="updateHabits()"> 🥗 Follow diet plan <span>4 meals</span></label>
+          <label><input type="checkbox" checked onchange="updateHabits()"> 🏋️ Workout <span>45 min</span></label>
+          <label><input type="checkbox" onchange="updateHabits()"> 😴 Sleep 8 hours <span>Target 11 PM</span></label>
+        </div>
+      </section>
+
+      <section id="chat" class="page">
+        <p class="eyebrow">PERSONAL AI</p><h2>AI Fitness Coach</h2>
+        <div class="chat card">
+          <div id="messages"><div class="message ai">👋 Hi! I'm your AI Fitness Coach. Ask me about your diet, workout, water, sleep or progress.</div><div class="message user">What should I eat after my workout?</div><div class="message ai">A protein-rich meal is a good choice. Try grilled chicken with rice and vegetables, or eggs with whole-grain toast.</div></div>
+          <div class="chat-input"><input id="chatInput" placeholder="Ask your AI coach..."><button class="primary" onclick="sendChat()">Send</button></div>
+        </div>
+      </section>
+
+      <section id="progress" class="page">
+        <p class="eyebrow">WEEKLY INSIGHTS</p><h2>Progress Tracking</h2>
+        <div class="grid2"><div class="card chart"><h3>Weight Progress</h3><div class="fake-chart"><span style="height:75%"></span><span style="height:68%"></span><span style="height:61%"></span><span style="height:58%"></span><span style="height:50%"></span><span style="height:44%"></span><span style="height:38%"></span></div><div class="chart-labels">Week 1&nbsp;&nbsp; Week 2&nbsp;&nbsp; Week 3&nbsp;&nbsp; Week 4&nbsp;&nbsp; Week 5&nbsp;&nbsp; Week 6&nbsp;&nbsp; Now</div></div>
+        <div class="card"><h3>AI Weekly Insight</h3><div class="big-score">82</div><p>Your fitness score improved by <b>6 points</b>. Keep your current routine and focus on consistent sleep.</p><div class="tag">POSITIVE TREND</div></div></div>
+      </section>
+
+      <section id="admin" class="page">
+        <p class="eyebrow">ADMIN CONTROL CENTER</p><h2>Admin Dashboard</h2>
+        <div class="stats"><div class="card stat"><span>👥 Total Users</span><strong>1,248</strong><small>+12% this month</small></div><div class="card stat"><span>🟢 Active Users</span><strong>842</strong><small>DAU</small></div><div class="card stat"><span>🤖 AI Chats</span><strong>3,672</strong><small>this week</small></div><div class="card stat"><span>⭐ Avg Fitness</span><strong>78/100</strong><small>+4 points</small></div></div>
+        <div class="card"><div class="card-head"><h3>User Management</h3><input class="search" placeholder="Search users..." onkeyup="filterUsers(this.value)"></div><table><thead><tr><th>User</th><th>Goal</th><th>Score</th><th>Status</th><th>Action</th></tr></thead><tbody id="users"><tr><td>Ali Khan</td><td>Muscle</td><td>88</td><td><span class="status">Active</span></td><td><button class="tiny" onclick="ban(this)">Ban</button></td></tr><tr><td>Sara Ahmed</td><td>Weight Loss</td><td>76</td><td><span class="status">Active</span></td><td><button class="tiny" onclick="ban(this)">Ban</button></td></tr><tr><td>Hamza Noor</td><td>Maintenance</td><td>81</td><td><span class="status">Active</span></td><td><button class="tiny" onclick="ban(this)">Ban</button></td></tr></tbody></table></div>
+      </section>
+    </main>
+  </div>
+  <div id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
